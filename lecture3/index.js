@@ -14,6 +14,22 @@ function requestListener(req, res) {
       res.write(data);
       res.end();
     });
+  } else if (req.url === "/create" && req.method === "POST") {
+    fs.appendFile("blog.html", "deneme", (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.statusCode = 302;
+        res.setHeader("location", "/");
+        res.end();
+      }
+    });
+  } else if (req.url === "/create") {
+    fs.readFile("create.html", (err, data) => {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      res.end();
+    });
   }
 }
 
