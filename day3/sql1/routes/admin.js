@@ -1,0 +1,34 @@
+const express = require("express");
+const router = express.Router();
+const path = require("path");
+const db = require("../data/db");
+
+router.get("/blog/create", function (req, res) {
+  res.render("admin/admin-create", { data: ["Yazılım", "Css", "Html"] });
+});
+router.post("/blog/create", async function (req, res) {
+  console.log(req.body);
+  const category = req.body.rad;
+  try {
+    await db.execute("INSERT INTO category (name) VALUES (?)", [category]);
+  } catch (err) {
+    console.log(err);
+  }
+  res.render("admin/admin-create", { data: ["Yazılım", "Css", "Html"] });
+});
+
+router.get("/blogs", async function (req, res) {
+  try {
+    var [data, _] = await db.execute("SELECT * FROM category");
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+  res.render("admin/admin-page", { data: data });
+});
+
+router.get("/blogs/:id", function (req, res) {
+  res.render("admin/admin-edit");
+});
+
+module.exports = router;
