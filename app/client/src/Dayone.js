@@ -26,6 +26,7 @@ function DayOne() {
   const handleClick = async () => {
     const res = await axios.post(`http://localhost:4000/name/${value}`);
     setRes(res.data);
+    debugger;
     message.success(res.data);
   };
   if (error) {

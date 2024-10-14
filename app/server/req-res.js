@@ -22,7 +22,7 @@ app.post("/name/:nm", (req, res) => {
   const name = req.params.nm; // NOTE üstekini aynı mantık
 
   //NOTE -  burada kayıt işlemlerini yapabilirsiin
-  res.send(`Arama Terimi: ${name}`);
+  res.send(`Arama Terzxsimi: ${name}`);
 });
 
 const PORT = process.env.PORT || 4000;
