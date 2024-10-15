@@ -6,6 +6,8 @@ const multer = require("multer");
 const upload = multer({ dest: "./public/images" });
 const Blog = require("../models/blog");
 const Category = require("../models/category");
+const { raw } = require("mysql");
+const { Op } = require("sequelize");
 
 router.get("/blog/create", function (req, res) {
   res.render("admin/admin-create", { data: ["Yazılım", "Css", "Html"] });
@@ -15,6 +17,13 @@ router.post("/blog/create", async function (req, res) {
   const category = req.body.rad;
   try {
     await Category.create({ name: category });
+
+    await Category.destroy({
+      where: {
+        name: "python",
+      },
+    });
+    console.log("python destroyed successfully");
   } catch (err) {
     console.log(err);
   }
@@ -24,7 +33,9 @@ router.post("/blog/create", async function (req, res) {
 router.get("/blogs", async function (req, res) {
   try {
     // var [data, _] = await db.execute("SELECT * FROM category");
-    var data = await Category.findByPk(1);
+    var data = await Category.findAll({
+      where: { [Op.or]: [{ name: "c++" }, { blogid: 2 }] },
+    });
     console.log(data);
   } catch (error) {
     console.log(error);
