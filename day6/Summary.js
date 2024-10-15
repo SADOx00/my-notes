@@ -80,3 +80,7 @@ const note4 = async () => {
 };
 
 // !SECTION
+
+// FIXME - Eğer İlişkilendirmeye ihticayıcın olursa kesinlikle sequılıze oku
+
+// FIXME - router lardaki fonksiyonları controllers dıye bır klasor olustur ve oraya koy fonksiyonları cunku daha sade olsun
