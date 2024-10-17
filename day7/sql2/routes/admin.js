@@ -6,6 +6,7 @@ const multer = require("multer");
 const upload = multer({ dest: "./public/images" });
 const Blog = require("../models/blog");
 const Category = require("../models/category");
+const User = require("../models/user");
 const { Op } = require("sequelize");
 
 router.get("/blog/create", function (req, res) {
