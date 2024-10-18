@@ -53,3 +53,11 @@ const note2 = async () => {
   };
 };
 // !SECTION
+
+// SECTION -   <<< Hash >>>
+
+//NOTE -  python için:
+
+//NOTE - tuple daha hızlı list ten
+//NOTE - dict sırasızdır
+// !SECTION
